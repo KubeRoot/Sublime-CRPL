@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+# 
+name: CRPL
+comment: "Creeper Reverse Polish Language Syntax: version 1.0
+Multiple matches were used from: https://knucklecracker.com/forums/index.php?topic=14272.0"
+file_extensions: [crpl]
+scope: source.crpl
+
+contexts:
+  main:
+    - match: '#.*$'
+      scope: comment.line.double-dash.crpl
+    - match: '\$\w+:(?=\S)'
+      scope: variable.language.crpl
+    - match: '(-&gt;|&lt;-|-\?)(\w+|!)'
+      scope: variable.language.crpl
+    - match: ':\w+'
+      scope: entity.name.function
+    - match: '@\w+'
+      scope: support.function.crpl
+    - match: '(\->|<\-)'
+      scope: keyword.operator.crpl
+
+    - match: 'gt|gte|lt|lte|eq|neq|eq0|neq0|swap|dup|dup2|pop|ClearStack|StackSize|add|sub|mul|div|mod|abs|round|min|max|floor|ceil|sin|cos|tan|asin|acos|atan|atan2|pow|log|ln|log10|PI|E|ShortestAngle|asfloat|asint|approximately|neg|CreateList|GetListElement|SetListElement|AppendToList|PrependToList|InsertListElement|RemoveListElement|GetListCount|and|or|xor|not|AppendStackToList|f|sqrt'
+      scope: keyword.operator.crpl
+    - match: 'GetTimer0|GetTimer1|GetTimer2|GetTimer2|SetTimer0|SetTimer1|SetTimer2|SetTimer3|GetKey|GetKeyDown|GetKeyUp|GetMouseButton|GetMouseButtonUp|GetMousePosition|GetMouseCell|QueueMove|GetQueuedMoveCount|AbortMove|SuspendMove|ClearQueuedMoves|GetTerrain|SetTerrain|GetWall|SetWall|GetVoid|SetVoid|IsTerrainLOS|Self|GetUnitAttribute|SetUnitAttribute|CurrentCoords|CurrentX|CurrentY|SetCurrentCoords|SetCurrentX|SetCurrentY|GetUnitCountInRange|GetCommandNodeCount|RandUnitCoords|GetUnitsInRange|GetEnemyUnitsInRange|GetCoresWithVar|CreateUnit|Damage|Destroy|GetUnitType|GetUnitAt|ArtifactCollected|GetTechLimit|SetTechLimit|SetBuildLimit|CreateEffect|CreateMist|GetScore|SetScore|GetAdditionalScore|AddAdditionalScore|AddScriptToUnit|GetScriptVar|SetScriptVar|SetImage|SetImagePosition|SetImagePositionX|SetImagePositionY|SetImagePositionZ|SetImageScale|SetImageScaleX|SetImageScaleY|SetImageRotation|SetImageColor|GetImagePosition|GetImagePositionX|GetImagePositionY|GetImagePositionZ|GetImageScale|GetImageScaleX|GetImageScaleY|GetImageRotation|GetImageColor|PlaySound|AddCreeper|SetCreeperNoLower|IsCreeperInRange|SetCreeper|GetCreeper|SetCreeperFlowRate|SetCreeperFlowRateOnDigitalis|SetCreeperFlowRateRL|SetCreeperFlowRateUD|SetCreeperFlowRateOnDigitalisRL|SetCreeperFlowRateOnDigitalisUD|SetCreeperEvaporationLimit|GetDeepestCreeperCell|GetPinFieldCell|SetPinFieldCell|SetFieldCell|GetFieldCell|SetCreeperColors|GetCreeperColors|GetDigitalis|SetDigitalis|IsDigitalisConnected|GetDigitalisGrowth|SetDigitalisGrowth|CreateSpore|CreateRunner|GetRunnerCount|GetGlobalRunnerCount|Trace|Trace2|Trace3|Trace4|Trace5|TraceStack|ShowTraceLog|ClearTraceLog|HideTraceLog|AddConversationMessage|ShowConversation|ClearConversation|DestroyConversation|MapHeight|MapWidth|ScreenHeight|ScreenWidth|ShowMessage|ShowMessageDismissible|WasMessageDismissed|RandFloat|RandInt|RandCoords|RandXCoord|RandYCoord|RandCoordsInRange|CellToPixel|PixelToCell|Distance|GetUpdateCount|IsEditMode|ElapsedTime|ResetGameTime|InvocationCount|Concat|Substring|StartsWith|EndsWith|Split|StringToList|SetPopupText|SetPopupTextAlwaysVisible|AscendToOrbit|ClearLocals|CreateEffectClipped|CreateListStartingSize|CurrentPizelCoords|DamageCreeper|DisableTowerField|DropFromOrbit|EnableAlternateControlMode|EnableNormalZoomControl|EnableTowerField|FailMission|GetAllUnitsInRange|GetCameraZoom|GetCellOccupiedCount|GetCurrentBuildTab|GetDigitalisRaw|GetMouseButtonDown|GetMouseScreenPosition|GetMouseScreenPixelPosition|GetTechArtifactType|GetterrainOverride|IsPaused|MakeRain|NotPersist|OperateWhilePaused|PauseGame|PersistCore|PrependStackToList|SetAdditionalScore|SetCameraZoom|SetCellOccupiedCount|SetCreeperMax|SetDigitalisRaw|SetGameTimeFrames|SetPopupTextX|SetPopupTextY|SetSystemInhibited|SetTechArtifactType|SetTerrainOverride|SetText|SetTextAnchor|SetTextColor|SetTextSize|SetTextX|SetTextY|SetUnitSelectableOverride|SetWind|ShowGameEventTag|ShowMessageDialog|StringLength|ToLower|UnpauseGame'
+      scope: support.function.crpl
+    - match: 'once|endonce|if|else|endif|do|loop|I|J|K|while|repeat|endwhile|break|return|delay'
+      scope: keyword.control.crpl
+    - match: 'CONST_ACPACKETREQUESTDELAY|CONST_AMMO|CONST_AMMOAC|CONST_BUILDCOST|CONST_CANREQUESTAMMO|CONST_CELLHEIGHT|CONST_CELLWIDTH|CONST_CONNECTABLE|CONST_COORDX|CONST_COORDY|CONST_COUNTSFORVICTORY|CONST_CREATEPZ|CONST_DESTROYMODE|CONST_DESTROYONDAMAGE|CONST_HEALRATE|CONST_HEALTH|CONST_ISBUILDING|CONST_ISDESTROYED|CONST_ISLANDED|CONST_MAXAMMO|CONST_MAXAMMOAC|CONST_MAXHEALTH|CONST_NULLIFIERDAMAGES|CONST_PACKETREQUESTDELAY|CONST_PIXELCOORDX|CONST_PIXELCOORDY|CONST_REQUESTACPACKETS|CONST_REQUESTPACKETS|CONST_SHOWAMMOACBAR|CONST_SHOWAMMOBAR|CONST_SHOWHEALTHBAR|CONST_SNIPERTARGET|CONST_SUPPORTSDIGITALIS|CONST_TAKEMAPSPACE|CONST_THORTARGET|CONST_SNIPERIGNORELOS'
+      scope: constant.language.crpl
+
+    - match: '(?:-?(\d+(\.\d*)?|\.\d+))|true|false|TRUE|FALSE'
+      scope: constant.language.crpl
+    - match: '\w+'
+      scope: variable.language.crpl
+    - match: "\"[^\"]*+\"|'[^']*+'"
+      scope: string.quoted.crpl
