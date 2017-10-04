@@ -37,3 +37,21 @@ contexts:
       scope: variable.language.crpl
     - match: "\"[^\"]*+\"|'[^']*+'"
       scope: string.quoted.crpl
+    - match: '"'
+      captures:
+        0: punctuation.definition.string.begin.crpl
+      push:
+        - meta_scope: string.quoted.double.crpl
+        - match: '"'
+          captures:
+            0: punctuation.definition.string.end.crpl
+          pop: true
+    - match: "'"
+      captures:
+        0: punctuation.definition.string.begin.crpl
+      push:
+        - meta_scope: string.quoted.single.crpl
+        - match: "'"
+          captures:
+            0: punctuation.definition.string.end.crpl
+          pop: true
