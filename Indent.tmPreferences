@@ -9,9 +9,9 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>.*\b(endif|endwhile|loop|endonce)\b.*</string>
+		<string>.*\b(endif|endwhile|loop|endonce|else)\b.*</string>
 		<key>increaseIndentPattern</key>
-		<string>.*\b(once|if|repeat|do)\b((?!(endif|endwhile|loop|endonce)\b).)*$</string>
+		<string>.*\b(once|if|repeat|do|else)\b((?!(endif|endwhile|loop|endonce)\b).)*$</string>
 	</dict>
 </dict>
 </plist>
