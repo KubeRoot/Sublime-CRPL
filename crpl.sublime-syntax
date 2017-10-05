@@ -11,14 +11,14 @@ contexts:
   main:
     - match: '#.*$'
       scope: comment.line.double-dash.crpl
-    - match: '\$\w+:(?=\S)'
-      scope: variable.language.crpl
+    - match: '\$(\w+):(?=\S)'
+      captures:
+        0: keyword.operator.crpl
+        1: variable.language.crpl
     - match: ':\w+'
       scope: entity.name.function
     - match: '@\w+'
       scope: support.function.crpl
-    #- match: '(\->|<\-|\-\-|\-\?)\b|(\-\-\?|\-\?!|<\-!|\->!)'
-    #  scope: keyword.operator.crpl
     - match: '(\->|<\-|\-\-|\-\?)(\w+)|(\-\-\?|\-\?!|<\-!|\->!)'
       captures:
         1: keyword.operator.crpl
@@ -36,8 +36,6 @@ contexts:
 
     - match: '(?:-?(\d+(\.\d*)?|\.\d+))|(?:true|false|TRUE|FALSE)'
       scope: constant.language.crpl
-    #- match: '\w+'
-    #  scope: variable.language.crpl
     - match: "\"[^\"]*+\"|'[^']*+'"
       scope: string.quoted.crpl
     - match: '"'
