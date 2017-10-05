@@ -2,7 +2,7 @@
 ---
 # 
 name: CRPL
-comment: "Creeper Reverse Polish Language Syntax: version 1.0
+comment: "Creeper Reverse Polish Language Syntax: version 1.1
 Multiple matches were used from: https://knucklecracker.com/forums/index.php?topic=14272.0"
 file_extensions: [crpl]
 scope: source.crpl
@@ -13,13 +13,11 @@ contexts:
       scope: comment.line.double-dash.crpl
     - match: '\$\w+:(?=\S)'
       scope: variable.language.crpl
-    - match: '(-&gt;|&lt;-|-\?)(\w+|!)'
-      scope: variable.language.crpl
     - match: ':\w+'
       scope: entity.name.function
     - match: '@\w+'
       scope: support.function.crpl
-    - match: '(\->|<\-)'
+    - match: '(\-\-\?|\-\?!|\-\?|<\-!|\->!|\->|<\-|\-\-)\b'
       scope: keyword.operator.crpl
 
     - match: '(gte|gt|lte|lt|eq0|neq0|eq|neq|swap|dup2|dup|pop|ClearStack|StackSize|add|sub|mul|div|mod|abs|round|min|max|floor|ceil|sin|cos|tan|asint|acos|atan2|atan|pow|log10|ln|log|PI|E|ShortestAngle|asfloat|asin|approximately|neg|CreateList|GetListElement|SetListElement|AppendToList|PrependToList|InsertListElement|RemoveListElement|GetListCount|and|or|xor|not|AppendStackToList|f|sqrt)\b'
